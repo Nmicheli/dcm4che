@@ -215,7 +215,7 @@ public final class Json {
         }
     }
 
-    private Object parseNumber() {
+    private Object parseNumber() throws IOException {
         int start = pos;
         if (peek() == '-')
             pos++;

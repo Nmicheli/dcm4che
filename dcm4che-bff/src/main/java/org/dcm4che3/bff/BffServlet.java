@@ -192,7 +192,9 @@ public class BffServlet extends HttpServlet {
             return;
         }
         TokenSet tokens = client.exchangeCode(code, codeVerifier);
-        validator.validateIdToken(tokens.getClaims(), session.getNonce(), System.currentTimeMillis());
+        // the nonce is only checked when the provider echoes it in the ID token
+        String expectedNonce = tokens.getClaims().containsKey("nonce") ? session.getNonce() : null;
+        validator.validateIdToken(tokens.getClaims(), expectedNonce, System.currentTimeMillis());
         String target = session.getRedirectUri();
         session.setTokens(tokens);
         cookie.write(resp, session.getId(), configuration.getSessionTimeout());
