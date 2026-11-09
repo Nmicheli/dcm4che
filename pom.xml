@@ -230,6 +230,7 @@
     <module>dcm4che-camel</module>
     <module>dcm4che-karaf</module>
     <module>dcm4che-cdi</module>
+    <module>dcm4che-bff</module>
     <module>dcm4che-ws-rs</module>
     <module>dcm4che-json</module>
     <module>dcm4che-dict</module>
